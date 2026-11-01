@@ -1,0 +1,14 @@
+# système / éditeurs
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.swp
+
+# outils locaux
+.claude/
+graphify-out/
+node_modules/
+*.log
+.env*

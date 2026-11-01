@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="fr" data-style="0">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Château Valmorée</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.min.js">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<!-- import maps pour les navigateurs qui ne les gèrent pas encore (Safari < 16.4) ; sans effet ailleurs -->
+<script async src="https://cdn.jsdelivr.net/npm/es-module-shims@1.10.0/dist/es-module-shims.js"></script>
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.min.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+} }
+</script>
+<script type="module" src="js/main.js"></script>
+</head>
+<body>
+<canvas id="c"></canvas>
+<header>
+  <a class="logo" href="#" onclick="scrollTo({ top: 0, behavior: 'smooth' }); return false">Valmorée</a>
+  <div class="tools">
+    <div class="styles" role="group" aria-label="Style du rendu">
+      <button type="button" data-style="0" aria-pressed="true">Fusain</button>
+      <button type="button" data-style="1" aria-pressed="false">Huile</button>
+      <button type="button" data-style="2" aria-pressed="false">Gravure</button>
+      <button type="button" data-style="3" aria-pressed="false">Aquarelle</button>
+    </div>
+    <button type="button" class="sound" aria-pressed="false"><span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="lbl">Activer le son</span>
+      <span class="invite" aria-hidden="true">Une musique accompagne la visite</span></button>
+  </div>
+</header>
+
+<section class="chap hero" data-a="-1" data-b=".09">
+  <div class="k">Vin liquoreux · Depuis 1702</div>
+  <h1>Château Valmorée</h1>
+  <div class="rule"></div>
+  <p>Grand vin liquoreux de Bordeaux</p>
+</section>
+<section class="chap" data-a=".13" data-b=".28">
+  <div class="k">I — La colline</div>
+  <h2>Au sommet du coteau</h2>
+  <p>Sur la plus haute colline du domaine, le sémillon et le sauvignon blanc attendent, dans les brumes d'automne, la pourriture noble.</p>
+</section>
+<section class="chap" data-a=".40" data-b=".55">
+  <div class="k">II — La demeure</div>
+  <h2>Pierre blonde et ardoise</h2>
+  <p>Tours, pavillons, volets clairs : depuis plus de quatre siècles, la même silhouette veille sur le vignoble.</p>
+</section>
+<section class="chap center" data-a=".60" data-b=".68">
+  <div class="k">III — Le seuil</div>
+  <h2>Entrez dans la magie de Valmorée</h2>
+</section>
+<section class="chap" data-a=".72" data-b=".79">
+  <div class="k">IV — L'accueil</div>
+  <h2>Sous la vague de chêne</h2>
+  <p>Le salon et son bar d'accueil ; plus loin, la rotonde où veillent les millésimes, du plus petit flacon au plus grand format.</p>
+</section>
+<section class="chap" data-a=".93" data-b=".975">
+  <div class="k">V — Le chai</div>
+  <h2>Le temps, en barriques</h2>
+  <p>Chaque millésime s'y élève, patiemment, en barriques de chêne neuf, jusqu'à devenir de la lumière que l'on boit.</p>
+</section>
+<section class="chap center end" data-a=".975" data-b="9">
+  <div class="k">Château Valmorée · Bordeaux</div>
+  <h2>Visitez le Château Valmorée</h2>
+  <div class="rule"></div>
+  <a href="#">Faire une réservation</a>
+  <p class="legal">L'abus d'alcool est dangereux pour la santé. À consommer avec modération.</p>
+</section>
+
+<div id="hint"><span class="k">Faites défiler</span><i></i></div>
+<div id="bar"><b></b></div>
+<div id="scroll"></div>
+</body>
+</html>
