@@ -41,10 +41,10 @@ html:not(.gl) .hero { opacity: 1; visibility: visible; } /* WebGL2 absent ou scr
 @keyframes drop { 0% { transform: scaleY(0) } 60% { transform: scaleY(1); opacity: 1 } 100% { opacity: 0 } }
 #bar { position: fixed; right: 2.2vw; top: 30vh; height: 40vh; width: 1px; background: rgba(110, 77, 18, .3); background: color-mix(in srgb, var(--gold) 30%, transparent); }
 #bar b { position: absolute; left: 0; top: 0; width: 1px; height: 0; background: var(--gold); }
-header { position: fixed; top: 0; left: 0; right: 0; z-index: 2; display: flex; align-items: center; justify-content: space-between; padding: 1.6rem 7vw 3.2rem;
+header { position: fixed; top: 0; left: 0; right: 0; z-index: 2; display: flex; align-items: center; justify-content: space-between; padding: 1.3rem 7vw 3.2rem;
          background: linear-gradient(rgba(var(--veil), calc(var(--veil-a) * .7)), rgba(var(--veil), 0)); pointer-events: none; }
 header > * { pointer-events: auto; }
-.logo { font: 400 1.6rem/1 'EB Garamond', Garamond, serif; letter-spacing: .38em; text-transform: uppercase; color: var(--ink); text-decoration: none; transition: color .8s; }
+.logo { font: 400 1.35rem/1 'EB Garamond', Garamond, serif; letter-spacing: .38em; text-transform: uppercase; color: var(--ink); text-decoration: none; transition: color .8s; }
 .styles { display: flex; gap: 1.6rem; }
 .styles button { font: 500 .68rem/1 Inter, sans-serif; letter-spacing: .26em; text-transform: uppercase; color: var(--soft); opacity: .7; background: none; border: 0;
                  padding: .5rem 0; cursor: pointer; border-bottom: 1px solid transparent; transition: opacity .4s, border-color .4s, color .8s; }
@@ -64,9 +64,6 @@ header > * { pointer-events: auto; }
 .sound[aria-pressed="true"] i:nth-child(2) { animation-delay: -.5s; } .sound[aria-pressed="true"] i:nth-child(3) { animation-delay: -.2s; } .sound[aria-pressed="true"] i:nth-child(4) { animation-delay: -.8s; }
 @keyframes breathe { 0%, 100% { transform: scaleY(1); } 50% { transform: scaleY(1.9); } }
 @keyframes eq { from { transform: scaleY(.25); } to { transform: scaleY(1); } }
-/* invitation sous le bouton, au début de la visite seulement (main.js) */
-.invite { position: absolute; top: 100%; right: 0; margin-top: .7rem; white-space: nowrap; font: 400 1rem/1.2 'EB Garamond', Garamond, serif; letter-spacing: 0; text-transform: none;
-          color: var(--soft); opacity: 0; transition: opacity 1s; pointer-events: none; }
 @media (prefers-reduced-motion: reduce) { .sound i, .sound[aria-pressed="true"] i { animation: none; } .sound[aria-pressed="true"] i { transform: scaleY(.7); } }
-@media (max-width: 640px) { .chap { left: 16px; right: 16px; bottom: 10vh; } #bar { display: none; } header { padding: 1rem 16px 2.4rem; flex-direction: column; align-items: flex-start; gap: .6rem; } .logo { font-size: 1.3rem; }
-                            .styles { gap: 1.1rem; } .styles button { letter-spacing: .14em; } .tools { gap: .4rem 1.4rem; flex-wrap: wrap; } .sound { letter-spacing: .14em; } .invite { left: 0; right: auto; } }
+@media (max-width: 640px) { .chap { left: 16px; right: 16px; bottom: 10vh; } #bar { display: none; } header { padding: 1rem 16px 2.4rem; flex-direction: column; align-items: flex-start; gap: .6rem; } .logo { font-size: 1.15rem; }
+                            .styles { gap: 1.1rem; } .styles button { letter-spacing: .14em; } .tools { gap: .4rem 1.4rem; flex-wrap: wrap; } .sound { letter-spacing: .14em; } }

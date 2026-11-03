@@ -23,9 +23,7 @@ renderer.shadowMap.needsUpdate = true;
 const post = createPost(renderer, camera, sunDir), U = post.U;
 
 // ---------- boucle ----------
-const chaps = [...document.querySelectorAll('.chap')].map(el => ({ el, a: +el.dataset.a, b: +el.dataset.b, o: -1 })), hint = $('#hint'), barFill = $('#bar b'), invite = $('.invite');
-let inviteSound = true; // invitation à activer le son, en début de visite ; jamais si le visiteur l'a déjà coupé une fois
-try { inviteSound = !localStorage.getItem('valmoree-sound'); } catch {}
+const chaps = [...document.querySelectorAll('.chap')].map(el => ({ el, a: +el.dataset.a, b: +el.dataset.b, o: -1 })), hint = $('#hint'), barFill = $('#bar b');
 let maxScroll = 0; // mis à jour au redimensionnement : lire scrollHeight à chaque image forcerait un recalcul de mise en page
 const scrollP = () => maxScroll > 0 ? scrollY / maxScroll : 0;
 let cur = fixedP ?? scrollP(), last = performance.now(), shownP = -1, dirty = true;
@@ -74,7 +72,6 @@ function frame(now) {
     c.el.style.opacity = o; c.el.style.transform = `translateY(${(1 - o) * 14}px)`; c.el.style.visibility = o > 0 ? 'visible' : 'hidden'; // caché : ni peint, ni lu, ni cliquable
   }
   hint.style.opacity = cur < .02 && textIn === 1 ? 1 : 0;
-  invite.style.opacity = inviteSound && cur < .05 && textIn === 1 ? 1 : 0;
   barFill.style.height = cur * 100 + '%';
 }
 function resize() {
@@ -87,7 +84,8 @@ function resize() {
   post.rt.setSize(v.x, v.y);
   maxScroll = document.documentElement.scrollHeight - innerHeight;
   U.uRes.value.copy(v); U.uPR.value = quality; // le trait garde la même taille en pixels d'écran, quelle que soit la qualité
-  const r = $('.logo').getBoundingClientRect(); U.uLogo.value.set(r.right / innerWidth, 1 - r.bottom / innerHeight); // coin bas-droit du logo (y vers le haut)
+  const b = Math.max($('.logo').getBoundingClientRect().bottom, $('header .tools').getBoundingClientRect().bottom);
+  U.uLogo.value.set(1, 1 - b / innerHeight); // bande nue sur toute la largeur, jusqu'au bas du logo et du menu (y vers le haut)
   dirty = true;
 }
 addEventListener('resize', resize); resize();
@@ -111,7 +109,6 @@ try { const s = +(q.get('s') ?? localStorage.getItem('valmoree-style')); if (s >
 const soundBtn = $('.sound'), soundLbl = $('.sound .lbl'), soundOn = () => soundBtn.getAttribute('aria-pressed') === 'true';
 function toggleSound(play) {
   setSound(play); soundBtn.setAttribute('aria-pressed', play); soundLbl.textContent = play ? 'Couper le son' : 'Activer le son';
-  inviteSound = false; dirty = true; // l'invitation a fait son office (ou a été refusée) : elle ne revient pas
   try { localStorage.setItem('valmoree-sound', play ? '1' : '0'); } catch {}
 }
 soundBtn.onclick = () => toggleSound(!soundOn());

@@ -86,7 +86,7 @@ export default /* glsl */ `
       vec2 er = vec2(m * .35, 0.);                          // marge droite un peu plus large : à l'œil, elle égale la gauche
       vec2 qd = abs(p - sz * .5 + er * .5) - (sz * .5 - m - er * .5) + rc;
       float bd = length(max(qd, 0.)) + min(max(qd.x, qd.y), 0.) - rc; // distance au bord en px CSS, > 0 dehors
-      // le coin haut gauche passe tout entier sous le logo : morsure du coin jusqu'au bas-droit du logo (uLogo, fraction de l'écran), raccord adouci
+      // le bandeau (logo et menu) passe tout entier sur le papier nu : morsure du haut jusqu'à uLogo (fraction de l'écran, x = 1 : toute la largeur), raccord adouci
       vec2 lo = (p - uLogo * sz) * vec2(1., -1.);            // > 0 : à droite du logo / sous le logo
       float ld = length(max(lo, 0.)) + min(max(lo.x, lo.y), 0.) - 26.; // distance (> 0 dehors) à la zone du logo élargie de 26 px
       float hb = max(40. - abs(bd + ld), 0.) / 40.; bd = max(bd, -ld) + hb * hb * 10.;
